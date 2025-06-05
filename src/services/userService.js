@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'api/user'
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 const getUser = async () => {
   const token = localStorage.getItem('user')
@@ -15,7 +15,7 @@ const getUser = async () => {
     }
   }
 
-  const { data } = await axios.get(`${BASE_URL}/data`, config)
+  const { data } = await axios.get(`${API_URL}/data`, config)
 
   return data
 }

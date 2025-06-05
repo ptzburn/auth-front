@@ -4,6 +4,8 @@ import { sendVerify, signout } from '../reducers/authReducer.js'
 import { Link, useNavigate } from 'react-router-dom'
 import { CiLogin, CiLogout } from 'react-icons/ci'
 
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 const Header = ({ userData, user }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dispatch = useDispatch()
@@ -35,7 +37,7 @@ const Header = ({ userData, user }) => {
         <div className="nav-buttons">
           <div className="profile group" onClick={toggleDropdown}>
             {userData?.avatarUrl ? (
-              <img src={userData?.avatarUrl} alt="avatar" />
+              <img src={`${API_URL}${userData?.avatarUrl}`} alt="avatar" />
             ) : (
               userData?.firstName[0].toUpperCase()
             )}

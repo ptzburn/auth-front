@@ -1,8 +1,10 @@
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 // Signing up
 const signUp = async userData => {
-  const { data } = await axios.post('/api/auth/sign-up', userData)
+  const { data } = await axios.post(`${API_URL}/api/auth/sign-up`, userData)
 
   if (data) localStorage.setItem('user', data.data.token)
 
@@ -13,7 +15,7 @@ const signUp = async userData => {
 
 // Signing in
 const signIn = async userData => {
-  const { data } = await axios.post('/api/auth/sign-in', userData)
+  const { data } = await axios.post(`${API_URL}/api/auth/sign-in`, userData)
   localStorage.setItem('user', data.data.token)
 
   return data
@@ -21,7 +23,7 @@ const signIn = async userData => {
 
 // Uploading avatar and getting its URL back
 const uploadAvatar = async avatar => {
-  const { data } = await axios.post('/api/auth/upload', avatar, {
+  const { data } = await axios.post(`${API_URL}/api/auth/upload`, avatar, {
     headers: { 'Content-Type': 'multipart/form-data' }
   })
 
@@ -38,7 +40,7 @@ const sendVerify = async () => {
 
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-  const { data } = await axios.post('/api/auth/send-verification')
+  const { data } = await axios.post(`${API_URL}/api/auth/send-verification`)
 
   return data
 }
@@ -53,28 +55,28 @@ const verifyEmail = async otp => {
 
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-  const { data } = await axios.post('/api/auth/verify-email', otp)
+  const { data } = await axios.post(`${API_URL}/api/auth/verify-email`, otp)
 
   return data
 }
 
 // Sending password reset OTP
 const sendResetOtp = async email => {
-  const { data } = await axios.post('/api/auth/send-reset', email)
+  const { data } = await axios.post(`${API_URL}/api/auth/send-reset`, email)
 
   return data
 }
 
 // Check reset OTP
 const checkResetOtp = async userData => {
-  const { data } = await axios.post('/api/auth/check-otp', userData)
+  const { data } = await axios.post(`${API_URL}/api/auth/check-otp`, userData)
 
   return data
 }
 
 // Resetting the password
 const resetPassword = async resetData => {
-  const { data } = await axios.post('/api/auth/reset-password', resetData)
+  const { data } = await axios.post(`${API_URL}/api/auth/reset-password`, resetData)
 
   return data
 }
