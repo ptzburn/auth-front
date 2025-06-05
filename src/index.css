@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+    --color-accent: #6049e7;
+    --color-error: #f44336;
+    --color-hover: #cd2cd4;
+}
+
+@layer base {
+    header {
+        @apply flex items-center justify-between mt-0 border-b-gray-400 shadow-md shadow-gray-400 h-16 mb-20 px-8;
+
+        & .logo {
+            @apply ml-2 text-white text-xl bg-black p-2 rounded-md font-semibold;
+        }
+
+        & .nav-buttons {
+            @apply flex items-center justify-center mr-2 gap-2;
+
+            & .profile {
+                @apply w-10 h-10 flex justify-center items-center rounded-full font-semibold text-lg bg-gray-400 text-white relative cursor-pointer hover:bg-accent hover:scale-105;
+
+                & img {
+                    @apply rounded-full;
+                }
+
+                & .options {
+                    @apply absolute hidden text-center rounded-md top-10 w-max text-lg p-2 right-0 z-10 text-black font-normal border-b-gray-400 shadow-md shadow-gray-400 bg-white;
+
+                    & li {
+                        @apply hover:bg-accent hover:text-white rounded-md p-1 flex items-center gap-1 justify-center;
+                    }
+                }
+            }
+
+            & .link, button {
+                @apply border-2 border-gray-400 py-2 w-25 rounded-md text-center text-gray-500 focus:outline-accent focus:text-accent focus:outline-2 focus:-outline-offset-2 cursor-pointer hover:border-accent hover:text-accent hover:scale-102 transition-transform duration-200 flex items-center justify-center gap-1;
+            }
+        }
+    }
+}
+
+@layer components {
+    .wrapper {
+        @apply px-5 max-w-7xl mx-auto flex flex-col relative z-10;
+    }
+
+    .home {
+        @apply flex items-center justify-center text-5xl;
+    }
+
+    .sign-up {
+        @apply flex flex-col max-w-md w-full border border-gray-400 p-10 rounded-lg items-center shadow-md shadow-gray-400;
+
+        & h2 {
+            @apply text-2xl font-bold mb-4;
+        }
+
+        & .input {
+            @apply flex flex-col my-2 w-full;
+
+            & label {
+                @apply text-xs font-normal mb-1;
+            }
+
+            & .field {
+                @apply relative w-full;
+
+                & i {
+                    @apply absolute pl-2 pt-2;
+                }
+
+                & input {
+                    @apply border border-gray-400 text-gray-800 text-sm rounded-md h-8 py-2 pl-8 font-light w-full focus:outline-accent focus:outline-2 focus:-outline-offset-1;
+                }
+
+                & button {
+                    @apply absolute right-2 mt-2 text-xs text-accent cursor-pointer hover:underline;
+                }
+            }
+
+            & .digits {
+                @apply flex justify-between mt-4;
+
+                & .digit {
+                    @apply border w-10 h-10 rounded-md text-2xl text-center;
+                }
+            }
+        }
+
+        & .alt-option {
+            @apply flex items-center justify-center w-full text-[11px] mt-4 gap-1;
+
+            & .link {
+                @apply text-accent hover:underline;
+            }
+        }
+
+        & .password-reset {
+            @apply text-xs flex items-start w-full text-accent cursor-pointer hover:underline;
+        }
+
+        & .submit {
+            @apply border-2 border-gray-400 py-2 rounded-md w-full text-center text-gray-500 mt-6 focus:outline-accent focus:text-accent focus:outline-2 focus:-outline-offset-2 cursor-pointer hover:border-accent hover:text-accent hover:scale-102 transition-transform duration-200;
+        }
+    }
+
+    .login {
+        @apply justify-center flex;
+    }
+
+    .dropzone {
+        @apply cursor-pointer rounded-full bg-gray-400 hover:bg-accent flex w-20 h-20 items-center;
+
+        & .dropdown {
+            @apply rounded-full w-full h-full items-center p-4;
+        }
+
+        & .preview {
+            @apply rounded-full w-full h-full overflow-hidden;
+        }
+
+        & i {
+            @apply cursor-pointer hover:scale-115 transition-transform duration-200 rounded-full w-full h-full items-center p-4;
+        }
+
+        & button {
+            @apply absolute right-0 top-0 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center p-1 cursor-pointer hover:bg-red-700;
+        }
+    }
+
+    .email-verification {
+        @apply flex items-center justify-center w-full;
+    }
+}
