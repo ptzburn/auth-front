@@ -15,7 +15,7 @@ const getUser = async () => {
     }
   }
 
-  const { data } = await axios.get(`${API_URL}/data`, config)
+  const { data } = await axios.get(`${API_URL}/api/user/data`, config)
 
   return data
 }
